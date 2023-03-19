@@ -2,7 +2,7 @@ import openai
 import streamlit as st
 
 # 设置 OpenAI API 密钥
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # 定义函数，根据输入的关键字和内容生成报告
 def generate_report(keyword, content, length):
