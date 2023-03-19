@@ -4,9 +4,9 @@ import time
 import os
 
 # Set OpenAI API endpoint and engine
-openai.api_endpoint = "https://api.openai.com"
+#openai.api_endpoint = "https://api.openai.com"
 openai.api_key = os.getenv("OPENAI_API_KEY")
-model_engine = "text-davinci-002"
+model_engine = "text-davinci-003"
 
 # GPT-3 Completion function
 def ask_gpt3(prompt):
