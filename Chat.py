@@ -13,7 +13,7 @@ logo = Image.open("LOGO.png")
 st.image(logo, use_column_width=False, width=200)
 
 # 添加文本输入框
-user_input = st.text_area("请输入您的文本：", height=200)
+user_input = st.text_area("请输入您的问题：", height=200)
 
 # 添加确认按钮
 if st.button("确认"):
@@ -21,7 +21,7 @@ if st.button("确认"):
     response = openai.Completion.create(
         engine=model_engine,
         prompt=user_input,
-        max_tokens=1024,
+        max_tokens=2048,
         n=1,
         stop=None,
         temperature=0.5,
