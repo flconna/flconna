@@ -1,10 +1,10 @@
-import streamlit as st
-import openai
-import time
 import os
+import openai
+import streamlit as st
+import time
 
 # Set OpenAI API endpoint and engine
-#openai.api_endpoint = "https://api.openai.com"
+openai.api_endpoint = "https://api.openai.com"
 openai.api_key = os.getenv("OPENAI_API_KEY")
 model_engine = "text-davinci-003"
 
