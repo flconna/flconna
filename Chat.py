@@ -1,9 +1,10 @@
+import os
 import openai
 import streamlit as st
 
 # 认证openai
-openai.api_key = "YOUR_API_KEY"
-
+openai.api_key = os.getenv("OPENAI_API_KEY")
+st.title("提问 by青森创造")
 # 创建文本输入框
 question = st.text_input("请输入您的问题")
 
