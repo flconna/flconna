@@ -27,4 +27,4 @@ if user_input:
     answer = response.choices[0].text.strip()
 
     # 将答案显示在文本区域中。
-    st.text_area("机器人:", answer, height=len(answer.split("\n")), background="#f0f0f0")
+    st.text_area("机器人:", str(answer), height=len(answer.split("\n")), background="#f0f0f0")
