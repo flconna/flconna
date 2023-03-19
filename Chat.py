@@ -10,7 +10,7 @@ model_engine = "text-davinci-003"
 
 # 添加Logo图片
 logo = Image.open("LOGO.png")
-st.image(logo, use_column_width=False, width=100)
+st.image(logo, use_column_width=False, width=200)
 
 # 添加文本输入框
 user_input = st.text_area("请输入您的文本：", height=200)
