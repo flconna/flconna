@@ -1,6 +1,6 @@
 import openai
 import streamlit as st
-
+import os
 # 设置 OpenAI API 密钥
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
