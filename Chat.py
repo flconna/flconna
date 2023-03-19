@@ -32,7 +32,7 @@ def app():
     # Check if user has entered text
     if user_input:
         # Display user question
-        st.text_area("用户:", user_input, height=30, background="#f0f0f0")
+        st.text_area("用户:", value=user_input, key='user_input', height=30, background="#f0f0f0")
 
         # Generate AI response
         prompt = f"Question: {user_input}\nAnswer:"
