@@ -5,7 +5,7 @@ import streamlit as st
 # Set OpenAI API Key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 # 设置OpenAI模型
-model_engine = "text-davinci-002"
+model_engine = "text-davinci-003"
 
 # 添加文本输入框
 user_input = st.text_area("请输入您的文本：", height=200)
