@@ -14,7 +14,7 @@ question = st.text_input("请输入您的问题")
 if st.button("确认"):
     # 调用OpenAI API，并传递问题作为“prompt”参数
     response = openai.Completion.create(
-        engine="davinci-3", prompt=question, max_tokens=1024, n=1, stop=None, temperature=0.7,
+        engine="davinci-3", prompt=question, max_tokens=2048, n=1, stop=None, temperature=0.7,
     )
     # 获取API返回的答案
     answer = response.choices[0].text.strip()
