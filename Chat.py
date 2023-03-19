@@ -11,7 +11,7 @@ model_engine = "text-davinci-003"
 header = st.empty()
 
 # 在空白区域中添加图片
-header.image("LOGO.png", width=100)
+header.image("LOGO.png", width=200)
 
 # 添加文本输入框
 user_input = st.text_area("请输入您的文本：", height=200)
