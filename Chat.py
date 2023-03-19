@@ -5,7 +5,7 @@ import streamlit as st
 # Set OpenAI API Key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 # 设置OpenAI模型
-model_engine = "text-davinci-002"
+model_engine = "text-davinci-003"
 
 # 设置网页标题和宽度
 st.set_page_config(page_title="文本模型问答", page_icon=":pencil2:", layout="wide")
@@ -34,10 +34,14 @@ if submitted:
         )
 
         # 从API响应中获取结果
-        result = response.choices[0].text
+        result = response.choices[0].text.strip()
+        
+        # 处理回答的格式
+        result = result.replace("\n", "<br>")
+        result = "<div style='text-align: left; font-size: 18px; line-height: 1.5;'>" + result + "</div>"
 
         # 将结果输出到下方的文本框
-        st.write("OpenAI API的回答：")
-        st.write(result)
+        st.write("OpenAI API的回答：", unsafe_allow_html=True)
+        st.write(result, unsafe_allow_html=True)
     else:
         st.warning("请输入您的问题！")
