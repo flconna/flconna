@@ -4,21 +4,29 @@ import streamlit as st
 
 # 认证openai
 openai.api_key = os.getenv("OPENAI_API_KEY")
-st.title("提问 by青森创造")
-# 创建文本输入框
-question = st.text_input("请输入您的问题")
+import openai
+import streamlit as st
 
-# 创建确认按钮
-if st.button("提交问题"):
-    # 使用OpenAI获取答案
-    answer = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=question,
-        temperature=0.5,
-        max_tokens=100,
-        n=1,
-        stop=None,
-        timeout=5,
+# 定义Streamlit页面的布局和样式
+st.set_page_config(page_title="Chat with OpenAI", page_icon=":speech_balloon:")
+st.title("Chat with OpenAI")
+st.markdown("---")
+
+# 定义一个函数来获取OpenAI的回答
+def get_answer(prompt):
+    # 调用OpenAI API来生成回答
+    response = openai.Completion.create(
+        engine="davinci", prompt=prompt, max_tokens=1024, n=1, stop=None, temperature=0.5
     )
-    # 显示答案
-    st.text_area(answer.choices[0].text, height=len(answer.choices[0].text.split('\n')), background='#f0f0f0')
+    # 返回回答
+    return response.choices[0].text.strip()
+
+# 在页面上创建一个文本框来获取用户的问题
+question = st.text_input("Ask a question:")
+
+# 在页面上创建一个确认按钮，当用户点击时获取OpenAI的回答
+if st.button("Submit"):
+    # 获取OpenAI的回答
+    answer = get_answer(question)
+    # 在页面上创建一个灰色背景的文本框来显示OpenAI的回答
+    st.text_area(answer, height=len(answer.split('\n')), background='#f0f0f0')
