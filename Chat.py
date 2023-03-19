@@ -7,7 +7,6 @@ from PIL import Image
 openai.api_key = os.getenv("OPENAI_API_KEY")
 # 设置OpenAI模型
 model_engine = "text-davinci-003"
-
 # 添加Logo图片
 logo = Image.open("LOGO.png")
 st.image(logo, use_column_width=False, width=200)
@@ -26,7 +25,6 @@ if st.button("确认"):
         stop=None,
         temperature=0.5,
     )
-    
     # 从API响应中获取结果
     result = response.choices[0].text
     
