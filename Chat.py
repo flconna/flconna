@@ -14,7 +14,7 @@ header = st.empty()
 header.image("LOGO.png", width=100)
 
 # 添加文本输入框
-user_input = st.text_area("请输入您的文本：", height=200)
+user_input = st.text_area("请输入您的文本：", height=150)
 
 # 添加确认按钮
 if st.button("确认"):
