@@ -8,7 +8,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 def generate_report(keyword, content, length):
     prompt = f"请根据以下关键词和内容，生成市场调研报告：\n关键字：{keyword}\n内容：{content}\n报告字数：{length}\n\n报告："
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=prompt,
         max_tokens=length,
         n=1,
