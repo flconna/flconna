@@ -12,7 +12,7 @@ question = st.text_input("请输入您的问题")
 if st.button("提交问题"):
     # 使用OpenAI获取答案
     answer = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=question,
         temperature=0.5,
         max_tokens=100,
