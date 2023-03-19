@@ -1,41 +1,34 @@
 import os
 import openai
 import streamlit as st
-
+import json
 # 认证openai
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# 获取 OpenAI 官方的文本生成模型 ID，这里使用了 GPT-3 的英文模型
-model_engine = "text-davinci-002"
-
-# 获取答案函数
-def get_answer(prompt):
+# Define a function to ask the OpenAI GPT-3 API a question
+def ask_gpt3(prompt):
     response = openai.Completion.create(
-        engine=model_engine,
+        engine="davinci",
         prompt=prompt,
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.7,
+        temperature=0.5,
+        max_tokens=2048,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
     )
     answer = response.choices[0].text
     return answer.strip()
 
-# 定义 Streamlit 的应用程序
+# Define the main Streamlit app
 def app():
-    # 在 Streamlit 中创建标题
-    st.title("Chatbot")
+    st.set_page_config(page_title="Chat with GPT-3", page_icon=":robot_face:")
+    st.title("Chat with GPT-3")
+    user_input = st.text_input("You:", "")
+    if user_input:
+        prompt = f"User: {user_input}\nAI:"
+        answer = ask_gpt3(prompt)
+        st.text_area("机器人:", answer, height=len(answer.split("\n")), background_color="#f0f0f0")
 
-    # 在 Streamlit 中创建文本输入框，用于用户输入问题
-    user_input = st.text_input("你的问题：")
-
-    # 当用户按下回车键时，将用户输入的问题发送给 OpenAI 的文本生成模型，并获取答案
-    if st.button("发送"):
-        prompt = f"Q: {user_input}\nA:"
-        answer = get_answer(prompt)
-
-        # 将答案显示在 Streamlit 中的文本框中
-        st.text_area("机器人:", str(answer), height=len(answer.split("\n")), background="#f0f0f0")
-
+# Run the app
 if __name__ == "__main__":
     app()
