@@ -5,7 +5,7 @@ import streamlit as st
 # Set OpenAI API Key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 # 设置OpenAI模型
-model_engine = "text-davinci-004"
+model_engine = "text-davinci-003"
 
 # 添加空白区域来调整页面高度
 header = st.empty()
