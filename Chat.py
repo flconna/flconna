@@ -21,4 +21,4 @@ if st.button("提交问题"):
         timeout=5,
     )
     # 显示答案
-    st.text(answer.choices[0].text)
+    st.text_area(answer.choices[0].text, height=len(answer.choices[0].text.split('\n')), background='#f0f0f0')
