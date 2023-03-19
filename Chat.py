@@ -14,7 +14,7 @@ header = st.empty()
 header.image("LOGO.png", width=100)
 
 # 添加文本输入框
-user_input = st.text_area("请输入您的文本：", height=150)
+user_input = st.text_area("请输入您的问题：", height=100)
 
 # 添加确认按钮
 if st.button("确认"):
@@ -22,7 +22,7 @@ if st.button("确认"):
     response = openai.Completion.create(
         engine=model_engine,
         prompt=user_input,
-        max_tokens=1024,
+        max_tokens=2048,
         n=1,
         stop=None,
         temperature=0.5,
@@ -32,5 +32,5 @@ if st.button("确认"):
     result = response.choices[0].text
     
     # 将结果输出到下方的文本框
-    st.write("OpenAI API的回答：")
+    st.write("OpenAI的回答：")
     st.write(result)
